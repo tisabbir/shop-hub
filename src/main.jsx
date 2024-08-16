@@ -1,16 +1,16 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import App from './App.jsx'
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
 import './index.css'
+import MainLayout from './layouts/MainLayout.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>Root</div>,
+    element: <MainLayout />,
     children: [
       {
         path: "contacts/:contactId",
