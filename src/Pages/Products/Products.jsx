@@ -111,8 +111,9 @@ const Products = () => {
       </div>
       </div>
 
-       {/* Filter */}
-       <div className="flex justify-center gap-4 my-4">
+       {/* Filter codes */}
+       <div className="flex flex-col md:flex-row justify-center gap-4 mb-4">
+        <div className="flex justify-center gap-4">
         <select value={category} onChange={handleCategoryChange} className="select select-bordered">
           <option value="">All Categories</option>
           <option value="Electronics">Electronics</option>
@@ -138,7 +139,9 @@ const Products = () => {
           <option value="GameOn">GameOn</option>
           <option value="SecureHome">SecureHome</option>
         </select>
+        </div>
 
+        <div className="flex justify-center gap-4">
         <input
           type="number"
           placeholder="Min Price"
@@ -154,7 +157,10 @@ const Products = () => {
           onChange={handleMaxPriceChange}
           className="input input-bordered w-28"
         />
+        </div>
       </div>
+
+      {/* Filter codes */}
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {products.map((product, index) => (
