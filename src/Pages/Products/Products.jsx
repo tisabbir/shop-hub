@@ -15,7 +15,7 @@ const Products = () => {
   const limit = 9; 
 
   const fetchProducts = () => {
-    const url = new URL("http://localhost:5000/products");
+    const url = new URL("https://shop-hub-server.vercel.app/products");
     url.searchParams.append("page", page);
     url.searchParams.append("search", search);
     url.searchParams.append("category", category);
