@@ -3,16 +3,16 @@ import { FaStar, FaStarHalf } from "react-icons/fa";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
-  const [page, setPage] = useState(1); // Current page state
-  const [totalPages, setTotalPages] = useState(1); // Total pages state
-  const [search, setSearch] = useState(""); // Search term state
-  const [category, setCategory] = useState(""); // **Changed Code** - Category filter state
-  const [brand, setBrand] = useState(""); // **Changed Code** - Brand filter state
-  const [minPrice, setMinPrice] = useState(0); // **Changed Code** - Minimum price filter state
-  const [maxPrice, setMaxPrice] = useState(""); // **Changed Code** - Maximum price filter state
+  const [page, setPage] = useState(1); 
+  const [totalPages, setTotalPages] = useState(1); 
+  const [search, setSearch] = useState(""); 
+  const [category, setCategory] = useState(""); 
+  const [brand, setBrand] = useState(""); 
+  const [minPrice, setMinPrice] = useState(0); 
+  const [maxPrice, setMaxPrice] = useState(""); 
   const [sortField, setSortField] = useState("");
   const [sortOrder, setSortOrder] = useState("");
-  const limit = 9; // Number of products per page
+  const limit = 9; 
 
   const fetchProducts = () => {
     const url = new URL("http://localhost:5000/products");
@@ -23,7 +23,7 @@ const Products = () => {
     url.searchParams.append("minPrice", minPrice);
     url.searchParams.append("maxPrice", maxPrice);
 
-    // **Include sort field and order in query**
+   
     if (sortField) url.searchParams.append("sortField", sortField);
     if (sortOrder) url.searchParams.append("sortOrder", sortOrder);
 
@@ -48,7 +48,7 @@ const Products = () => {
   };
   const handleSearch = (event) => {
     setSearch(event.target.value);
-    setPage(1); // Reset to the first page when a new search is initiated
+    setPage(1); 
   };
 
   const handleCategoryChange = (event) => {
@@ -71,7 +71,7 @@ const Products = () => {
     setPage(1);
   };
 
-  // **Sorting Handlers**
+ 
   const handleSortChange = (field) => {
     if (sortField === field) {
       setSortOrder(sortOrder === "asc" ? "desc" : "asc");
@@ -94,7 +94,7 @@ const Products = () => {
       </div>
       {/* search */}
 
-       {/* Sort Controls */}
+       {/* Sort */}
        <div className="flex gap-4">
         <button
           className="btn"
@@ -111,9 +111,8 @@ const Products = () => {
       </div>
       </div>
 
-       {/* Filter Options */}
+       {/* Filter */}
        <div className="flex justify-center gap-4 my-4">
-        {/* **Changed Code - Start** */}
         <select value={category} onChange={handleCategoryChange} className="select select-bordered">
           <option value="">All Categories</option>
           <option value="Electronics">Electronics</option>
@@ -155,7 +154,6 @@ const Products = () => {
           onChange={handleMaxPriceChange}
           className="input input-bordered w-28"
         />
-        {/* **Changed Code - End** */}
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
