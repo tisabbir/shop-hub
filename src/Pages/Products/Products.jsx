@@ -10,19 +10,34 @@ const Products = () => {
   const [brand, setBrand] = useState(""); // **Changed Code** - Brand filter state
   const [minPrice, setMinPrice] = useState(0); // **Changed Code** - Minimum price filter state
   const [maxPrice, setMaxPrice] = useState(""); // **Changed Code** - Maximum price filter state
+  const [sortField, setSortField] = useState("");
+  const [sortOrder, setSortOrder] = useState("");
   const limit = 9; // Number of products per page
 
-  useEffect(() => {
-    fetchProducts(page, search, category, brand, minPrice, maxPrice);
-  }, [page, search, category, brand, minPrice, maxPrice]);
+  const fetchProducts = () => {
+    const url = new URL("http://localhost:5000/products");
+    url.searchParams.append("page", page);
+    url.searchParams.append("search", search);
+    url.searchParams.append("category", category);
+    url.searchParams.append("brand", brand);
+    url.searchParams.append("minPrice", minPrice);
+    url.searchParams.append("maxPrice", maxPrice);
 
-  const fetchProducts = async (page, searchTerm,  category, brand, minPrice, maxPrice) => {
-    const res = await fetch(`http://localhost:5000/products?page=${page}&limit=${limit}&search=${searchTerm}&category=${category}&brand=${brand}&minPrice=${minPrice}&maxPrice=${maxPrice}`);
+    // **Include sort field and order in query**
+    if (sortField) url.searchParams.append("sortField", sortField);
+    if (sortOrder) url.searchParams.append("sortOrder", sortOrder);
 
-    const data = await res.json();
-    setProducts(data.products);
-    setTotalPages(data.totalPages);
+    fetch(url)
+      .then((res) => res.json())
+      .then(({ products, totalPages }) => {
+        setProducts(products);
+        setTotalPages(totalPages);
+      });
   };
+
+  useEffect(() => {
+    fetchProducts();
+  }, [page, search, category, brand, minPrice, maxPrice, sortField, sortOrder]);
 
   const handlePrevious = () => {
     if (page > 1) setPage(page - 1);
@@ -56,8 +71,34 @@ const Products = () => {
     setPage(1);
   };
 
+  // **Sorting Handlers**
+  const handleSortChange = (field) => {
+    if (sortField === field) {
+      setSortOrder(sortOrder === "asc" ? "desc" : "asc");
+    } else {
+      setSortField(field);
+      setSortOrder("asc");
+    }
+  };
+
   return (
     <div>
+
+       {/* Sort Controls */}
+       <div className="flex gap-4 mb-4">
+        <button
+          className="btn"
+          onClick={() => handleSortChange("price")}
+        >
+          Sort by Price {sortField === "price" ? (sortOrder === "asc" ? "↑" : "↓") : ""}
+        </button>
+        <button
+          className="btn"
+          onClick={() => handleSortChange("createdAt")}
+        >
+          Sort by Date {sortField === "createdAt" ? (sortOrder === "asc" ? "↑" : "↓") : ""}
+        </button>
+      </div>
 
       {/* search */}
       <div className="mx-auto py-4  flex justify-center gap-2">
