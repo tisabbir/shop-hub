@@ -84,8 +84,18 @@ const Products = () => {
   return (
     <div>
 
+      
+
+      <div className="py-4 flex flex-col lg:flex-row justify-center items-center gap-4">
+        {/* search */}
+      <div className="">
+        <button className="btn">Search by item name</button>
+        <input className="input input-bordered" placeholder="Item Name" onChange={handleSearch} />
+      </div>
+      {/* search */}
+
        {/* Sort Controls */}
-       <div className="flex gap-4 mb-4">
+       <div className="flex gap-4">
         <button
           className="btn"
           onClick={() => handleSortChange("price")}
@@ -99,13 +109,7 @@ const Products = () => {
           Sort by Date {sortField === "createdAt" ? (sortOrder === "asc" ? "↑" : "↓") : ""}
         </button>
       </div>
-
-      {/* search */}
-      <div className="mx-auto py-4  flex justify-center gap-2">
-        <button className="btn">Search by item name</button>
-        <input className="input input-bordered" placeholder="Item Name" onChange={handleSearch} />
       </div>
-      {/* search */}
 
        {/* Filter Options */}
        <div className="flex justify-center gap-4 my-4">
