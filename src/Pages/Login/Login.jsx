@@ -1,10 +1,11 @@
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
+import { FaGoogle } from "react-icons/fa";
 
 
 const Login = () => {
 
-    const {loginUser} = useAuth();
+    const {loginUser, signInWithGoogle} = useAuth();
     const navigate = useNavigate();
 
     const handleLogin = e => {
@@ -21,6 +22,17 @@ const Login = () => {
             console.log(err);
         })
 
+    }
+
+    const handleGoogleSignIn = () => {
+        signInWithGoogle()
+        .then(()=>{
+            alert('You are now successfully logged in')
+            navigate('/')
+        })
+        .catch((err)=>{
+            console.log(err);
+        })
     }
   return (
     <div>
@@ -59,11 +71,15 @@ const Login = () => {
                 />
                 <label className="label">
                  Don't have a Account? <Link to={'/register'} className="text-blue-500">Register Now</Link>
+
                 </label>
               </div>
-              <div className="form-control mt-6">
-                <button className="btn btn-primary">Login</button>
+              <div className="form-control ">
+                <button className="btn btn-primary text-white">Login</button>
               </div>
+                 <div className="">
+                    <button onClick={handleGoogleSignIn} className="flex gap-2 items-center justify-center mx-auto btn w-full bg-green-400 text-white">Log in <FaGoogle /></button>
+                 </div>
             </form>
           </div>
         </div>
