@@ -7,6 +7,8 @@ const Register = () => {
         const email = e.target.email.value;
         const password = e.target.password.value;
         
+        //now we will create the user
+        
 
     }
   return (

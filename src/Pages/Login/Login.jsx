@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
 
 
 const Login = () => {
+
+    const {name, createUser, loginUser} = useAuth();
+
     const handleLogin = e => {
         e.preventDefault();
         const email = e.target.email.value;
@@ -16,7 +20,7 @@ const Login = () => {
           <div className="text-center lg:text-left">
             <h1 className="text-3xl font-bold">Login now!</h1>
             <p className="py-6">
-                Join the largest community of the world.
+                Join the largest community {name} of the world.
             </p>
           </div>
           <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
