@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 
-const Login = () => {
+const Register = () => {
     const handleLogin = e => {
         e.preventDefault();
         const email = e.target.email.value;
@@ -14,7 +14,7 @@ const Login = () => {
       <div className="hero bg-base-200 min-h-screen">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="text-center lg:text-left">
-            <h1 className="text-3xl font-bold">Login now!</h1>
+            <h1 className="text-3xl font-bold">Register now!</h1>
             <p className="py-6">
                 Join the largest community of the world.
             </p>
@@ -45,11 +45,11 @@ const Login = () => {
                   required
                 />
                 <label className="label">
-                 Don't have a Account? <Link to={'/register'} className="text-blue-500">Register Now</Link>
+                Already have a Account? <Link to={'/login'} className="text-blue-500">Login Now</Link>
                 </label>
               </div>
               <div className="form-control mt-6">
-                <button className="btn btn-primary">Login</button>
+                <button className="btn btn-primary">Register</button>
               </div>
             </form>
           </div>
@@ -59,4 +59,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
