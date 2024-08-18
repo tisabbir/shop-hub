@@ -77,10 +77,10 @@ const Login = () => {
               <div className="form-control ">
                 <button className="btn btn-primary text-white">Login</button>
               </div>
-                 <div className="">
-                    <button onClick={handleGoogleSignIn} className="flex gap-2 items-center justify-center mx-auto btn w-full bg-green-400 text-white">Log in <FaGoogle /></button>
-                 </div>
             </form>
+                 <div className="">
+                    <button onClick={handleGoogleSignIn} className="flex gap-2 items-center justify-center mx-auto btn w-1/2 -mt-4 mb-4 bg-green-400 text-white">Log in <FaGoogle /></button>
+                 </div>
           </div>
         </div>
       </div>
