@@ -1,14 +1,23 @@
 import { Link } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
 
 
 const Register = () => {
+
+    const {createUser} = useAuth();
     const handleLogin = e => {
         e.preventDefault();
         const email = e.target.email.value;
         const password = e.target.password.value;
         
         //now we will create the user
-        
+        createUser(email, password)
+        .then(()=>{
+            alert('user created successfully');
+        })
+        .catch((err)=>{
+            console.log(err);
+        });
 
     }
   return (
