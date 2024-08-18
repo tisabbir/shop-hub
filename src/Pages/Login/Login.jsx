@@ -4,13 +4,20 @@ import useAuth from "../../Hooks/useAuth";
 
 const Login = () => {
 
-    const {name, createUser, loginUser} = useAuth();
+    const {loginUser} = useAuth();
 
     const handleLogin = e => {
         e.preventDefault();
         const email = e.target.email.value;
         const password = e.target.password.value;
-        
+        loginUser(email, password)
+        .then(()=>{
+            alert('You are now successfully logged in')
+
+        })
+        .catch((err)=>{
+            console.log(err);
+        })
 
     }
   return (
