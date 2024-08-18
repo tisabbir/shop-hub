@@ -1,10 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 
 
 const Login = () => {
 
     const {loginUser} = useAuth();
+    const navigate = useNavigate();
 
     const handleLogin = e => {
         e.preventDefault();
@@ -13,6 +14,7 @@ const Login = () => {
         loginUser(email, password)
         .then(()=>{
             alert('You are now successfully logged in')
+            navigate('/')
 
         })
         .catch((err)=>{
