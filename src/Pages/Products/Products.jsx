@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { FaStar, FaStarHalf } from "react-icons/fa";
+import { FaSearch, FaSort, FaStar, FaStarHalf } from "react-icons/fa";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -86,35 +86,35 @@ const Products = () => {
 
       
 
-      <div className="py-4 flex flex-col lg:flex-row justify-center items-center gap-4">
+      <div className="py-4 flex flex-col md:flex-row justify-center items-center gap-4">
         {/* search */}
-      <div className="">
-        <button className="btn">Search by item name</button>
-        <input className="input input-bordered" placeholder="Item Name" onChange={handleSearch} />
+      <div className="flex items-center border rounded-lg pl-2 border-[#FFCD00]">
+        <FaSearch className="text-xl text-[#FFCD00]" />
+        <input className="input focus:outline-none border-none" placeholder="Search by item Name" onChange={handleSearch} />
       </div>
       {/* search */}
 
        {/* Sort */}
        <div className="flex gap-4">
         <button
-          className="btn"
+          className="btn bg-[#FFCD00]"
           onClick={() => handleSortChange("price")}
         >
-          Sort by Price {sortField === "price" ? (sortOrder === "asc" ? "↑" : "↓") : ""}
+          <FaSort /> Price {sortField === "price" ? (sortOrder === "asc" ? "↑" : "↓") : ""}
         </button>
         <button
-          className="btn"
+          className="btn bg-[#FFCD00]"
           onClick={() => handleSortChange("createdAt")}
         >
-          Sort by Date {sortField === "createdAt" ? (sortOrder === "asc" ? "↑" : "↓") : ""}
+          <FaSort /> Date {sortField === "createdAt" ? (sortOrder === "asc" ? "↑" : "↓") : ""}
         </button>
       </div>
       </div>
 
        {/* Filter codes */}
        <div className="flex flex-col md:flex-row justify-center gap-4 mb-4">
-        <div className="flex justify-center gap-4">
-        <select value={category} onChange={handleCategoryChange} className="select select-bordered">
+        <div className="flex justify-center gap-2 md:gap-4">
+        <select value={category} onChange={handleCategoryChange} className="select select-bordered border-[#FFCD00] w-28 md:w-full">
           <option value="">All Categories</option>
           <option value="Electronics">Electronics</option>
           <option value="Accessories">Accessories</option>
@@ -122,7 +122,7 @@ const Products = () => {
           <option value="Computers">Computers</option>
         </select>
 
-        <select value={brand} onChange={handleBrandChange} className="select select-bordered">
+        <select value={brand} onChange={handleBrandChange} className="select select-bordered border-[#FFCD00] w-28 md:w-full">
           <option value="">All Brands</option>
           <option value="TechBrand">TechBrand</option>
           <option value="CompTech">CompTech</option>
@@ -147,7 +147,7 @@ const Products = () => {
           placeholder="Min Price"
           value={minPrice}
           onChange={handleMinPriceChange}
-          className="input input-bordered w-28"
+          className="input input-bordered w-24 md:w-full border-[#FFCD00]"
         />
 
         <input
@@ -155,7 +155,7 @@ const Products = () => {
           placeholder="Max Price"
           value={maxPrice}
           onChange={handleMaxPriceChange}
-          className="input input-bordered w-28"
+          className="input input-bordered w-24 md:w-full border-[#FFCD00]"
         />
         </div>
       </div>
@@ -165,16 +165,16 @@ const Products = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {products.map((product, index) => (
           <div key={index} className="mx-auto">
-            <div className="card bg-base-100 w-96 shadow-xl">
+            <div className="card bg-base-100  shadow-xl">
               <figure className="">
                 <img
                   src={product.image}
                   alt={product.name}
-                  className="rounded-xl"
+                  className="rounded-xl p-2"
                 />
               </figure>
               <div className="card-body items-center text-center">
-                <h2 className="card-title">{product.name}</h2>
+                <h2 className="card-title text-xl md:text-2xl lg:text-3xl">{product.name}</h2>
                 <p className="font-semibold">{product.brand}</p>
                 <p>{product.description}</p>
                 <div className="">
@@ -202,7 +202,7 @@ const Products = () => {
       <div className="flex justify-center my-4 items-center">
         <button
           onClick={handlePrevious}
-          className="btn"
+          className="btn bg-[#FFCD00]"
           disabled={page === 1}
         >
           « previous
@@ -212,7 +212,7 @@ const Products = () => {
         </span>
         <button
           onClick={handleNext}
-          className="btn"
+          className="btn bg-[#FFCD00]"
           disabled={page === totalPages}
         >
           next »

@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import { FaGoogle } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 
 const Login = () => {
@@ -14,7 +15,13 @@ const Login = () => {
         const password = e.target.password.value;
         loginUser(email, password)
         .then(()=>{
-            alert('You are now successfully logged in')
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "You're successfully logged in",
+            showConfirmButton: false,
+            timer: 1500
+          });
             navigate('/')
 
         })
@@ -27,7 +34,13 @@ const Login = () => {
     const handleGoogleSignIn = () => {
         signInWithGoogle()
         .then(()=>{
-            alert('You are now successfully logged in')
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "You're successfully logged in",
+            showConfirmButton: false,
+            timer: 1500
+          });
             navigate('/')
         })
         .catch((err)=>{
@@ -70,16 +83,16 @@ const Login = () => {
                   required
                 />
                 <label className="label">
-                 Don't have a Account? <Link to={'/register'} className="text-blue-500">Register Now</Link>
+                 Don't have a Account? <Link to={'/register'} className=" ml-2 font-bold text-[#FFCD00]">Register Now</Link>
 
                 </label>
               </div>
               <div className="form-control ">
-                <button className="btn btn-primary text-white">Login</button>
+                <button className="btn bg-[#FFCD00] text-black">Login</button>
               </div>
             </form>
-                 <div className="">
-                    <button onClick={handleGoogleSignIn} className="flex gap-2 items-center justify-center mx-auto btn w-1/2 -mt-4 mb-4 bg-green-400 text-white">Log in <FaGoogle /></button>
+                 <div className="flex justify-center">
+                    <button onClick={handleGoogleSignIn} className="flex gap-2 items-center justify-center btn -mt-4 w-4/5 mb-4 bg-[#FFCD00] text-black">Log in <FaGoogle />oogle</button>
                  </div>
           </div>
         </div>

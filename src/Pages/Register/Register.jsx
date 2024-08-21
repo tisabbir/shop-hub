@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
+import Swal from "sweetalert2";
 
 
 const Register = () => {
@@ -13,7 +14,13 @@ const Register = () => {
         //now we will create the user
         createUser(email, password)
         .then(()=>{
-            alert('user created successfully');
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "You're successfully registered.",
+            showConfirmButton: false,
+            timer: 1500
+          });
         })
         .catch((err)=>{
             console.log(err);
@@ -56,11 +63,11 @@ const Register = () => {
                   required
                 />
                 <label className="label">
-                Already have a Account? <Link to={'/login'} className="text-blue-500">Login Now</Link>
+                Already have a Account? <Link to={'/login'} className="ml-2 font-bold text-[#FFCD00]">Login Now</Link>
                 </label>
               </div>
               <div className="form-control mt-6">
-                <button className="btn btn-primary">Register</button>
+                <button className="btn bg-[#FFCD00] text-black">Register</button>
               </div>
             </form>
           </div>
