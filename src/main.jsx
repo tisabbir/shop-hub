@@ -7,6 +7,7 @@ import Home from "./Pages/Home/Home.jsx";
 import Login from "./Pages/Login/Login.jsx";
 import Register from "./Pages/Register/Register.jsx";
 import AuthProvider from "./Providers/AuthProvider.jsx";
+import ProductList from "./Pages/ProductList/ProductList.jsx";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
+      },
+      {
+        path: "/list",
+        element: <ProductList />,
       },
     ],
   },
